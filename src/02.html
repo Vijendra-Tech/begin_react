@@ -1,0 +1,27 @@
+<!-- Create Html element using JSX -->
+
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+
+  <script type="text/babel">
+    const children = "Hello World";
+    const className = "container";
+    const props = { children, className };
+    const rootElement = document.getElementById("root");
+    const element = <div {...props} id ="idp-1" className="new-c"></div>;
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(element);
+  </script>
+</body>

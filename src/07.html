@@ -1,0 +1,50 @@
+<!-- Event handler in React -->
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    const state = { count: 0, name: "" };
+
+    const handleClick = (event) => {
+      console.log(event);
+      setState({ name: event.target.value });
+    };
+
+    function MainApp() {
+      return (
+        <div>
+          <p>Count:{state.count}</p>
+          <button onClick={() => setState({ count: state.count + 1 })}>
+            Click Me
+          </button>
+          <p>User typed:{state.name}</p>
+          <p>
+            <input onChange={handleClick} />
+          </p>
+        </div>
+      );
+    }
+
+    function setState(newState) {
+      Object.assign(state, newState);
+      renderApp();
+    }
+
+    function renderApp() {
+      root.render(<MainApp />);
+    }
+    renderApp();
+  </script>
+</body>

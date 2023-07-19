@@ -1,0 +1,32 @@
+<!-- Render example - React.render() -->
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    function blink() {
+      const time = new Date().toLocaleTimeString();
+      const element = (
+        <div>
+          <input value={time} />
+          <input value={time} />
+        </div>
+      );
+
+      root.render(element);
+    }
+    blink();
+    setInterval(blink, 1000);
+  </script>
+</body>

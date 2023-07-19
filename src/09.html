@@ -1,0 +1,45 @@
+<!-- Reusable React Hooks -->
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    function useLocalStorageValue(key, defaultValue) {
+      const [state, setState] = React.useState(
+        () => window.localStorage.getItem(key) || defaultValue
+      );
+
+      React.useEffect(() => {
+        window.localStorage.setItem(key, state);
+      }, [key, state]);
+
+      return [state, setState];
+    }
+
+    function TaskApp() {
+      const [task, setTask] = useLocalStorageValue("task");
+      const handleChange = (event) => setTask(event.target.value);
+      return (
+        <div>
+          <form>
+            <label htmlFor="task">Task:</label>
+            <input value={task} onChange={handleChange} id="task" />
+          </form>
+          {task ? <strong>Your Task:{task}</strong> : "Please type your task"}
+        </div>
+      );
+    }
+    root.render(<TaskApp />);
+  </script>
+</body>

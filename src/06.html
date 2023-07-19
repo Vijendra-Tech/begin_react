@@ -1,0 +1,67 @@
+<!-- Applying css -->
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <style>
+    .box {
+      border: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    .box--large {
+      width: 270px;
+      height: 270px;
+    }
+    .box--medium {
+      width: 180px;
+      height: 180px;
+    }
+    .box--small {
+      width: 90px;
+      height: 90px;
+    }
+  </style>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    function ShadowBox({ style, className = "", size, ...rest }) {
+      const sizeClassName = size ? `box--${size}` : "";
+      return (
+        <div
+          className={`box ${className} ${sizeClassName}`}
+          style={{ fontStyle: "italic", ...style }}
+          {...rest}
+        ></div>
+      );
+    }
+    const element = (
+      <div>
+        <div
+          className="box box--small"
+          style={{ fontStyle: "italic", backgroundColor: "red" }}
+        >
+          Small Shadow Box
+        </div>
+        <div
+          className="box box--medium"
+          style={{ fontStyle: "italic", backgroundColor: "green" }}
+        >
+          Medium Shadow Box
+        </div>
+      </div>
+    );
+    root.render(element);
+  </script>
+</body>

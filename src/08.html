@@ -1,0 +1,49 @@
+<!-- Reacty UseEffect and use state -->
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    function Task() {
+      //   const [task, setTask] = React.useState(
+      //     window.localStorage.getItem("task") || ""
+      //   );
+
+      //use lazy initiaizer from useState to avoid multiple time from local storage
+      const [task, setTask] = React.useState(() => {
+        console.log("Read form local storage  whenver neccessary");
+        return window.localStorage.getItem("task") || "";
+      });
+
+      console.log("component rendered");
+      //use Effect for Side Effect
+      React.useEffect(() => {
+        window.localStorage.setItem("task", task);
+      }, [task]);
+
+      const handleChange = (event) => setTask(event.target.value);
+
+      return (
+        <div>
+          <form>
+            <label htmlFor="task">Task:</label>
+            <input value={task} onChange={handleChange} id="task" />
+          </form>
+          {task ? <strong>Your Task:{task}</strong> : "Please type your task"}
+        </div>
+      );
+    }
+    root.render(<Task />);
+  </script>
+</body>

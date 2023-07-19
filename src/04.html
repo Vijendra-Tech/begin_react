@@ -1,0 +1,31 @@
+
+<!-- Simple Reusable Component -->
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <script type="text/babel">
+    const Message = (props) => <div className="message">{props.msg}</div>;
+    const element = (
+      <div className="container">
+        // <Message>Hello NAN</Message>
+        // <span>{Message({ msg: "hello world" })} </span>
+        // <span>{Message({ msg: "Hello Moon" })} </span>
+        <Message msg ="Hello JSX" />
+      </div>
+    );
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(element);
+  </script>
+</body>

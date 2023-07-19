@@ -1,0 +1,37 @@
+<body>
+  <div id="root"></div>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://www.unpkg.com/@babel/standalone@7.22.9/babel.js"
+  ></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    function App() {
+      const inputRef = React.useRef("");
+      const [name, setName] = React.useState("");
+      //not a correct way of doing
+      const handleChange = (event) => {
+        // setTimeout(() => {
+        //   const myName = event.target.value;
+        //   console.log(myName);
+        // }, 2000);
+      };
+      return (
+        <div>
+          <form>
+          <input  type="text" onChange={handleChange} />
+          </form>
+        </div>
+      );
+    }
+    root.render(<App />);
+  </script>
+</body>
